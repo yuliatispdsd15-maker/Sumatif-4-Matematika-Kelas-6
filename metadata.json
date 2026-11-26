@@ -1,0 +1,8 @@
+{
+  "name": "Sumatif 4 Mateamtika ",
+  "description": "Aplikasi Tes Sumatif 4 Matematika Kelas VI SD Negeri 2 Cupel sinkronisasi Google Spreadsheet, unduh PDF naskah \u0026 hasil tes, serta panel guru.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
