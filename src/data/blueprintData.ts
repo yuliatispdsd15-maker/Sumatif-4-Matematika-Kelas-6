@@ -3,6 +3,7 @@ import { Question, QuestionBlueprint, CognitiveLevel, Difficulty } from '../type
 /**
  * Data Acuan Matriks Kisi-Kisi Penulisan Soal Tes Sumatif
  * Kurikulum Merdeka - Fase C (Kelas VI) Mata Pelajaran Matematika
+ * Lingkup Materi: Rasio
  */
 
 export interface BlueprintDefinition {
@@ -13,275 +14,140 @@ export interface BlueprintDefinition {
   bobotSkor: number;
 }
 
-// Peta acuan default 30 butir soal Kurikulum Merdeka
+// Peta acuan default 15 butir soal Kurikulum Merdeka (Lingkup Materi: Rasio)
 export const DEFAULT_BLUEPRINT_MAP: Record<number, BlueprintDefinition> = {
   1: {
     elemen: 'Bilangan',
     tujuanPembelajaran:
-      'Peserta didik dapat menyelesaikan masalah operasi hitung bilangan bulat negatif dan positif dalam kehidupan sehari-hari.',
+      'Peserta didik dapat menyatakan dan menyederhanakan rasio dua besaran dalam bentuk paling sederhana.',
     indikatorSoal:
-      'Disajikan narasi perubahan suhu es yang dipanaskan secara berkala, peserta didik dapat menentukan suhu akhir es setelah waktu pemanasan tertentu.',
+      'Disajikan jumlah dua jenis buah dalam keranjang, peserta didik dapat menentukan bentuk paling sederhana dari rasio banyak kedua buah tersebut.',
     levelKognitif: 'L1',
     bobotSkor: 1,
   },
   2: {
     elemen: 'Bilangan',
     tujuanPembelajaran:
-      'Peserta didik dapat menyelesaikan masalah penalaran yang melibatkan operasi hitung campuran pecahan dan bilangan cacah.',
+      'Peserta didik dapat menentukan rasio bagian terhadap keseluruhan (part-to-whole) dari suatu kelompok objek.',
     indikatorSoal:
-      'Disajikan cerita kontekstual panen beras (kuintal) yang dijual dan dibagi rata ke beberapa tetangga, peserta didik dapat menghitung berat beras yang diterima tiap orang dalam satuan kilogram.',
-    levelKognitif: 'L2',
+      'Disajikan banyak siswa laki-laki dan siswa perempuan dalam satu kelas, peserta didik dapat menentukan rasio banyak siswa laki-laki terhadap jumlah seluruh siswa.',
+    levelKognitif: 'L1',
     bobotSkor: 1,
   },
   3: {
-    elemen: 'Bilangan',
+    elemen: 'Aljabar',
     tujuanPembelajaran:
-      'Peserta didik dapat mengaplikasikan konsep Faktor Persekutuan Terbesar (FPB) untuk menyelesaikan permasalahan pembagian barang secara merata.',
+      'Peserta didik dapat menentukan nilai besaran menggunakan konsep rasio ekuivalen dalam konteks campuran.',
     indikatorSoal:
-      'Disajikan data tiga jenis perlengkapan belajar yang akan dibagikan sama banyak kepada siswa berprestasi, peserta didik dapat menentukan jumlah siswa terbanyak penerima dan jumlah pensil yang didapat masing-masing siswa.',
+      'Disajikan rasio campuran sirup dan air matang serta takaran sirup yang digunakan, peserta didik dapat menghitung volume air matang yang dibutuhkan.',
     levelKognitif: 'L2',
     bobotSkor: 1,
   },
   4: {
-    elemen: 'Bilangan',
+    elemen: 'Aljabar',
     tujuanPembelajaran:
-      'Peserta didik dapat menerapkan konsep Kelipatan Persekutuan Terkecil (KPK) dalam menentukan jadwal atau waktu kejadian bersamaan.',
+      'Peserta didik dapat menyelesaikan masalah rasio dua besaran apabila jumlah keseluruhan diketahui.',
     indikatorSoal:
-      'Disajikan interval waktu berbunyinya tiga lonceng pos kamling pada pukul tertentu, peserta didik dapat menentukan waktu saat ketiga lonceng berbunyi bersamaan kembali untuk kedua kalinya.',
-    levelKognitif: 'L1',
+      'Disajikan rasio kelereng dua anak dan jumlah seluruh kelereng mereka, peserta didik dapat menghitung banyak kelereng salah satu anak.',
+    levelKognitif: 'L2',
     bobotSkor: 1,
   },
   5: {
     elemen: 'Aljabar',
     tujuanPembelajaran:
-      'Peserta didik dapat memahami konsep rasio, perbandingan, dan skala pada peta atau denah.',
+      'Peserta didik dapat menyelesaikan masalah rasio dua besaran apabila selisih nilainya diketahui.',
     indikatorSoal:
-      'Disajikan jarak dua kota pada peta dan skala tertentu, peserta didik dapat menghitung jarak sebenarnya antara kedua kota tersebut dalam satuan kilometer.',
-    levelKognitif: 'L1',
+      'Disajikan rasio umur dua anggota keluarga beserta selisih umurnya, peserta didik dapat menentukan umur salah satu orang tersebut.',
+    levelKognitif: 'L2',
     bobotSkor: 1,
   },
   6: {
-    elemen: 'Aljabar',
+    elemen: 'Bilangan',
     tujuanPembelajaran:
-      'Peserta didik dapat menyelesaikan masalah proporsi dan perbandingan senilai yang berkaitan dengan selisih dan jumlah nilai.',
+      'Peserta didik dapat menerapkan konsep laju satuan (unit rate) untuk menghitung harga pembelian barang.',
     indikatorSoal:
-      'Disajikan perbandingan umur dua orang dan selisih umur mereka, peserta didik dapat menghitung jumlah umur kedua orang tersebut seluruhnya.',
+      'Disajikan harga sejumlah buku tulis yang sama, peserta didik dapat menentukan harga untuk jumlah buku tulis yang berbeda.',
     levelKognitif: 'L2',
     bobotSkor: 1,
   },
   7: {
-    elemen: 'Aljabar',
+    elemen: 'Pengukuran',
     tujuanPembelajaran:
-      'Peserta didik dapat menganalisis permasalahan gerak lurus beraturan (kecepatan rata-rata, jarak, dan waktu) untuk kasus berpapasan.',
+      'Peserta didik dapat menggunakan rasio skala pada denah atau peta untuk menentukan ukuran sebenarnya.',
     indikatorSoal:
-      'Disajikan jarak dua kota, waktu keberangkatan yang sama, dan kecepatan dua kendaraan yang berpapasan, peserta didik dapat menganalisis dan menentukan pukul berapa kedua kendaraan saling berpapasan.',
-    levelKognitif: 'L3',
+      'Disajikan skala denah taman sekolah dan panjang objek pada denah dalam cm, peserta didik dapat menghitung panjang objek sebenarnya dalam satuan meter.',
+    levelKognitif: 'L2',
     bobotSkor: 1,
   },
   8: {
-    elemen: 'Pengukuran',
+    elemen: 'Aljabar',
     tujuanPembelajaran:
-      'Peserta didik dapat menyelesaikan masalah yang melibatkan hubungan antara volume bangun ruang, debit aliran zat cair, dan waktu pengisian.',
+      'Peserta didik dapat menyelesaikan masalah perbandingan bertingkat atau rasio tiga besaran dalam konteks uang tabungan.',
     indikatorSoal:
-      'Disajikan ukuran bak penampungan air berbentuk balok dan debit kran air pengisi, peserta didik dapat menghitung waktu yang dibutuhkan untuk mengisi bak hingga penuh.',
+      'Disajikan rasio uang tabungan tiga anak dan nominal tabungan salah satu anak, peserta didik dapat menghitung jumlah tabungan dua anak lainnya.',
     levelKognitif: 'L2',
     bobotSkor: 1,
   },
   9: {
-    elemen: 'Geometri',
+    elemen: 'Bilangan',
     tujuanPembelajaran:
-      'Peserta didik dapat menghitung keliling lingkaran dan mengaplikasikannya dalam pemecahan masalah lingkungan sekitar.',
+      'Peserta didik dapat membandingkan dua rasio harga satuan untuk menentukan penawaran yang lebih hemat.',
     indikatorSoal:
-      'Disajikan diameter sebuah taman berbentuk lingkaran yang akan dipasangi lampu penerangan dengan jarak tertentu, peserta didik dapat menentukan jumlah lampu yang dibutuhkan.',
-    levelKognitif: 'L1',
+      'Disajikan dua paket penjualan beras dengan berat dan harga berbeda di dua toko, peserta didik dapat menganalisis dan membandingkan harga per kilogram di kedua toko.',
+    levelKognitif: 'L3',
     bobotSkor: 1,
   },
   10: {
-    elemen: 'Geometri',
+    elemen: 'Pengukuran',
     tujuanPembelajaran:
-      'Peserta didik dapat menghitung luas gabungan bangun datar (persegi panjang dan lingkaran).',
+      'Peserta didik dapat menganalisis permasalahan rasio berbalik nilai yang melibatkan kecepatan dan waktu tempuh.',
     indikatorSoal:
-      'Disajikan gambar bangun datar gabungan antara persegi panjang dan setengah lingkaran berimpit, peserta didik dapat menghitung luas gabungan bangun tersebut.',
-    levelKognitif: 'L2',
+      'Disajikan kecepatan dan waktu tempuh perjalanan pertama serta kecepatan baru pada jarak yang sama, peserta didik dapat menentukan waktu tempuh yang dibutuhkan.',
+    levelKognitif: 'L3',
     bobotSkor: 1,
   },
   11: {
-    elemen: 'Pengukuran',
+    elemen: 'Bilangan',
     tujuanPembelajaran:
-      'Peserta didik dapat menganalisis dan menghitung volume bangun ruang tabung serta konversi volume ke satuan liter.',
+      'Peserta didik dapat mengidentifikasi berbagai pasangan bilangan yang membentuk rasio ekuivalen.',
     indikatorSoal:
-      'Disajikan dimensi drum penampung minyak berbentuk tabung yang telah terisi sebagian (pecahan), peserta didik dapat menganalisis sisa volume minyak yang dibutuhkan hingga penuh dalam satuan liter.',
-    levelKognitif: 'L3',
+      'Disajikan rasio campuran cat warna biru dan putih serta 3 pilihan kombinasi takaran, peserta didik dapat memilih semua kombinasi yang memiliki rasio ekuivalen.',
+    levelKognitif: 'L2',
     bobotSkor: 1,
   },
   12: {
-    elemen: 'Geometri',
+    elemen: 'Bilangan',
     tujuanPembelajaran:
-      'Peserta didik dapat menghitung luas permukaan bangun ruang kubus dalam konteks pemecahan masalah sehari-hari.',
+      'Peserta didik dapat mengevaluasi rasio bagian terhadap bagian, bagian terhadap keseluruhan, serta selisih dari suatu kumpulan data.',
     indikatorSoal:
-      'Disajikan ukuran rusuk sebuah kotak kado berbentuk kubus, peserta didik dapat menentukan luas minimal kertas kado yang dibutuhkan untuk menutup seluruh permukaannya.',
-    levelKognitif: 'L1',
+      'Disajikan data jumlah pot dua jenis bunga dan 3 pernyataan rasio, peserta didik dapat memilih semua pernyataan rasio yang bernilai benar.',
+    levelKognitif: 'L2',
     bobotSkor: 1,
   },
   13: {
-    elemen: 'Analisis Data dan Peluang',
+    elemen: 'Aljabar',
     tujuanPembelajaran:
-      'Peserta didik dapat menentukan nilai rata-rata (mean) dari sekumpulan data tunggal.',
+      'Peserta didik dapat menerapkan konsep laju satuan dan proporsi senilai dalam transaksi jual beli.',
     indikatorSoal:
-      'Disajikan sekumpulan data perolehan nilai ulangan harian siswa, peserta didik dapat menghitung nilai rata-rata (mean) dari data tersebut.',
-    levelKognitif: 'L1',
+      'Disajikan harga untuk 3 kg mangga dan 3 pernyataan terkait harga satuan serta total pembelian, peserta didik dapat memilih semua pernyataan yang benar.',
+    levelKognitif: 'L2',
     bobotSkor: 1,
   },
   14: {
-    elemen: 'Analisis Data dan Peluang',
+    elemen: 'Pengukuran',
     tujuanPembelajaran:
-      'Peserta didik dapat menganalisis data tunggal untuk menentukan nilai median (nilai tengah) dan modus.',
+      'Peserta didik dapat menganalisis skala denah untuk menentukan ukuran sebenarnya, rasio sisi, dan luas bangun datar.',
     indikatorSoal:
-      'Disajikan data berat badan sejumlah siswa peserta cerdas cermat yang belum berurutan, peserta didik dapat menentukan nilai median dan modus secara tepat.',
-    levelKognitif: 'L2',
+      'Disajikan denah ruang kelas berskala 1 : 150 dengan ukuran panjang dan lebar pada gambar, peserta didik dapat memilih semua pernyataan benar terkait ukuran sebenarnya, rasio sisi, dan luasnya.',
+    levelKognitif: 'L3',
     bobotSkor: 1,
   },
   15: {
-    elemen: 'Aljabar',
-    tujuanPembelajaran:
-      'Peserta didik dapat menyelesaikan masalah aritmatika sosial yang berkaitan dengan persentase diskon (potongan harga).',
-    indikatorSoal:
-      'Disajikan harga barang sebelum diskon dan persentase potongan harga belanja pendidikan, peserta didik dapat menghitung jumlah uang yang harus dibayar oleh pembeli.',
-    levelKognitif: 'L1',
-    bobotSkor: 1,
-  },
-  16: {
-    elemen: 'Analisis Data dan Peluang',
-    tujuanPembelajaran:
-      'Peserta didik dapat menyajikan dan menafsirkan data dalam bentuk diagram lingkaran.',
-    indikatorSoal:
-      'Disajikan diagram lingkaran persentase pilihan kegiatan ekstrakurikuler beserta jumlah total siswa, peserta didik dapat menghitung banyak siswa yang memilih ekstrakurikuler tertentu.',
-    levelKognitif: 'L2',
-    bobotSkor: 1,
-  },
-  17: {
     elemen: 'Bilangan',
     tujuanPembelajaran:
-      'Peserta didik dapat menentukan akar pangkat tiga dari bilangan kubik yang berkaitan dengan volume kubus.',
+      'Peserta didik dapat membandingkan rasio konsentrasi beberapa campuran untuk menarik kesimpulan yang tepat.',
     indikatorSoal:
-      'Disajikan volume bak penampungan air berbentuk kubus, peserta didik dapat menentukan panjang rusuk bagian dalam bak tersebut.',
-    levelKognitif: 'L2',
-    bobotSkor: 1,
-  },
-  18: {
-    elemen: 'Pengukuran',
-    tujuanPembelajaran:
-      'Peserta didik dapat mengonversi satuan kecepatan dari km/menit ke meter per detik (m/s).',
-    indikatorSoal:
-      'Disajikan jarak tempuh dan waktu seorang pelari maraton cilik, peserta didik dapat menghitung dan mengonversi kecepatan rata-rata ke satuan meter/detik.',
-    levelKognitif: 'L2',
-    bobotSkor: 1,
-  },
-  19: {
-    elemen: 'Geometri',
-    tujuanPembelajaran:
-      'Peserta didik dapat mengidentifikasi dan membedakan sifat-sifat bangun datar layang-layang melalui pilihan berganda kompleks.',
-    indikatorSoal:
-      'Disajikan tiga deskripsi sifat geometris bangun datar layang-layang, peserta didik dapat memilih semua pernyataan yang benar (lebih dari satu jawaban benar).',
-    levelKognitif: 'L2',
-    bobotSkor: 1,
-  },
-  20: {
-    elemen: 'Geometri',
-    tujuanPembelajaran:
-      'Peserta didik dapat menganalisis luas, keliling, dan estimasi nilai ekonomis lahan kebun berbentuk bangun datar.',
-    indikatorSoal:
-      'Disajikan ukuran kebun berbentuk persegi panjang dan harga jual per meter persegi, peserta didik dapat mengevaluasi dan memilih semua pernyataan yang bernilai benar.',
-    levelKognitif: 'L3',
-    bobotSkor: 1,
-  },
-  21: {
-    elemen: 'Bilangan',
-    tujuanPembelajaran:
-      'Peserta didik dapat menerapkan operasi hitung campuran bilangan desimal dan satuan berat dalam belanja sehari-hari.',
-    indikatorSoal:
-      'Disajikan data belanja kebutuhan pokok beras dan gula pasir, peserta didik dapat memverifikasi kebenaran hitungan berat tiap jenis barang dan total berat belanjaan.',
-    levelKognitif: 'L2',
-    bobotSkor: 1,
-  },
-  22: {
-    elemen: 'Aljabar',
-    tujuanPembelajaran:
-      'Peserta didik dapat menganalisis konsep aritmatika sosial mengenai bruto, neto, tara, modal, harga jual, dan keuntungan.',
-    indikatorSoal:
-      'Disajikan narasi pembelian buah dalam keranjang berkategori bruto dan tara, peserta didik dapat menentukan nilai kebenaran (Benar/Salah) pada 3 pernyataan terkait neto, modal, dan laba.',
-    levelKognitif: 'L3',
-    bobotSkor: 1,
-  },
-  23: {
-    elemen: 'Analisis Data dan Peluang',
-    tujuanPembelajaran:
-      'Peserta didik dapat menganalisis tabel distribusi frekuensi data tunggal dan menghubungkannya dengan kriteria ketercapaian (KKTP).',
-    indikatorSoal:
-      'Disajikan data frekuensi nilai ulangan dan batas KKTP sekolah, peserta didik dapat menentukan nilai kebenaran (Benar/Salah) pada 3 pernyataan terkait modus, jumlah siswa tuntas, dan persentase remedial.',
-    levelKognitif: 'L2',
-    bobotSkor: 1,
-  },
-  24: {
-    elemen: 'Pengukuran',
-    tujuanPembelajaran:
-      'Peserta didik dapat menganalisis volume balok dan kapasitas penampungan air dalam satuan liter.',
-    indikatorSoal:
-      'Disajikan dimensi bak penampungan air balok dan kondisi keterisian 3/4 kapasitas, peserta didik dapat menentukan kebenaran (Benar/Salah) untuk volume penuh, volume isi, dan volume air yang perlu ditambahkan.',
-    levelKognitif: 'L2',
-    bobotSkor: 1,
-  },
-  25: {
-    elemen: 'Geometri',
-    tujuanPembelajaran:
-      'Peserta didik dapat menerapkan rumus keliling dan luas lingkaran pada objek kontekstual meja hias bundar.',
-    indikatorSoal:
-      'Disajikan diameter meja bundar, peserta didik dapat mengevaluasi kebenaran (Benar/Salah) untuk panjang jari-jari, panjang renda hias keliling, dan luas permukaan kaca penutup.',
-    levelKognitif: 'L2',
-    bobotSkor: 1,
-  },
-  26: {
-    elemen: 'Aljabar',
-    tujuanPembelajaran:
-      'Peserta didik dapat menganalisis skala denah untuk menentukan ukuran panjang, lebar, dan luas sebenarnya.',
-    indikatorSoal:
-      'Disajikan denah lapangan upacara sekolah dengan skala 1 : 400, peserta didik dapat menilai kebenaran (Benar/Salah) dari pernyataan panjang sebenarnya, lebar sebenarnya, dan luas sebenarnya.',
-    levelKognitif: 'L2',
-    bobotSkor: 1,
-  },
-  27: {
-    elemen: 'Pengukuran',
-    tujuanPembelajaran:
-      'Peserta didik dapat menganalisis permasalahan jarak, waktu tempuh total, waktu istirahat, dan kecepatan gerak murni bus pariwisata.',
-    indikatorSoal:
-      'Disajikan jadwal keberangkatan bus karya wisata, waktu tiba, jarak tempuh, dan durasi istirahat, peserta didik dapat memverifikasi nilai kebenaran (Benar/Salah) pada total waktu, waktu gerak murni, dan kecepatan rata-rata saat melaju.',
-    levelKognitif: 'L3',
-    bobotSkor: 1,
-  },
-  28: {
-    elemen: 'Bilangan',
-    tujuanPembelajaran:
-      'Peserta didik dapat menyelesaikan operasi persentase dan pecahan terhadap kuantitas barang persediaan awal.',
-    indikatorSoal:
-      'Disajikan persediaan awal buku tulis di koperasi dan data penjualan hari Senin (persen) dan Selasa (pecahan), peserta didik dapat menentukan kebenaran (Benar/Salah) dari 3 pernyataan penjualan dan sisa stok.',
-    levelKognitif: 'L1',
-    bobotSkor: 1,
-  },
-  29: {
-    elemen: 'Bilangan',
-    tujuanPembelajaran:
-      'Peserta didik dapat mengaplikasikan FPB dalam menentukan paket hadiah dan rincian isi barang per regu penerima.',
-    indikatorSoal:
-      'Disajikan jumlah tiga perlengkapan hadiah lomba kebersihan kelas, peserta didik dapat mengevaluasi kebenaran (Benar/Salah) nilai FPB, banyak regu terbanyak penerima, dan komposisi isi barang per regu.',
-    levelKognitif: 'L2',
-    bobotSkor: 1,
-  },
-  30: {
-    elemen: 'Geometri',
-    tujuanPembelajaran:
-      'Peserta didik dapat menganalisis koordinat Kartesius 4 titik untuk mengidentifikasi bentuk bangun datar, keliling, dan luas.',
-    indikatorSoal:
-      'Disajikan 4 titik koordinat bidang Kartesius yang saling dihubungkan, peserta didik dapat menganalisis dan menentukan kebenaran (Benar/Salah) dari jenis bangun datar yang terbentuk, keliling, dan luasnya.',
+      'Disajikan data takaran gula dan air pada tiga gelas percobaan, peserta didik dapat membandingkan tingkat kemanisan larutan dan memilih semua pernyataan yang benar.',
     levelKognitif: 'L3',
     bobotSkor: 1,
   },
@@ -390,20 +256,14 @@ export function getQuestionBlueprint(q: Question, index: number): QuestionBluepr
 
 function inferElemenFromTopic(topic: string): string {
   const t = topic.toLowerCase();
-  if (t.includes('bilangan') || t.includes('pecahan') || t.includes('fpb') || t.includes('kpk') || t.includes('pangkat')) {
-    return 'Bilangan';
-  }
-  if (t.includes('lingkaran') || t.includes('bangun datar') || t.includes('kubus') || t.includes('geometri') || t.includes('layang')) {
-    return 'Geometri';
-  }
-  if (t.includes('debit') || t.includes('volume') || t.includes('kecepatan') || t.includes('jarak')) {
+  if (t.includes('skala') || t.includes('denah') || t.includes('kecepatan') || t.includes('ukuran')) {
     return 'Pengukuran';
   }
-  if (t.includes('skala') || t.includes('perbandingan') || t.includes('diskon') || t.includes('bruto') || t.includes('aritmatika')) {
+  if (t.includes('selisih') || t.includes('jumlah') || t.includes('tiga besaran') || t.includes('proporsi') || t.includes('campuran')) {
     return 'Aljabar';
   }
-  if (t.includes('statistika') || t.includes('diagram') || t.includes('mean') || t.includes('modus') || t.includes('median')) {
-    return 'Analisis Data dan Peluang';
+  if (t.includes('rasio') || t.includes('laju') || t.includes('bilangan')) {
+    return 'Bilangan';
   }
   return 'Bilangan';
 }

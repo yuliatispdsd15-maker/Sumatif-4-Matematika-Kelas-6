@@ -52,6 +52,8 @@ export interface Question {
   indikatorSoal?: string;
   levelKognitif?: CognitiveLevel;
   bobot?: number;
+  imageUrl?: string;
+  imageCaption?: string;
 }
 
 export interface ShuffledQuestion extends Question {

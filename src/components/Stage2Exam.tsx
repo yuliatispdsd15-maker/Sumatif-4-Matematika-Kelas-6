@@ -715,6 +715,23 @@ export const Stage2Exam: React.FC<Stage2ExamProps> = ({
                 {currentQ.type === 'pgk_kategori' && 'Tentukan pilihan Benar atau Salah untuk setiap pernyataan di bawah ini.'}
               </div>
 
+              {/* Gambar Soal (Jika Ada) */}
+              {currentQ.imageUrl && (
+                <figure className="mb-5 rounded-2xl border border-slate-200 bg-slate-50/70 p-3 sm:p-4 text-center">
+                  <img
+                    src={currentQ.imageUrl}
+                    alt={currentQ.imageCaption || `Ilustrasi Soal No. ${currentIndex + 1}`}
+                    referrerPolicy="no-referrer"
+                    className="max-h-56 sm:max-h-68 w-auto mx-auto rounded-xl object-contain bg-white shadow-2xs border border-slate-100"
+                  />
+                  {currentQ.imageCaption && (
+                    <figcaption className="mt-2.5 text-[11px] sm:text-xs font-medium text-slate-600">
+                      {currentQ.imageCaption}
+                    </figcaption>
+                  )}
+                </figure>
+              )}
+
               {/* Teks Soal */}
               <div className="text-sm sm:text-base text-slate-900 leading-relaxed font-medium whitespace-pre-line mb-6">
                 {currentQ.text}
@@ -889,10 +906,10 @@ export const Stage2Exam: React.FC<Stage2ExamProps> = ({
           <div className="bg-white rounded-2xl p-5 shadow-xs border border-slate-200">
             <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700 mb-3 flex items-center justify-between">
               <span>Nomor Soal Ujian</span>
-              <span className="text-[11px] font-normal text-slate-500">22 Butir</span>
+              <span className="text-[11px] font-normal text-slate-500">{totalQuestions} Butir</span>
             </h4>
 
-            {/* Grid 22 Soal */}
+            {/* Grid Nomor Soal */}
             <div className="grid grid-cols-5 sm:grid-cols-6 lg:grid-cols-5 gap-2 mb-4">
               {shuffledQuestions.map((_, i) => {
                 const isCurrent = currentIndex === i;

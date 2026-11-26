@@ -137,7 +137,7 @@ export function downloadStudentResultPDF(result: ExamResult): void {
   y += 8;
 
   // Baris-baris tabel
-  const totalQuestionsCount = (result.benar || 0) + (result.salah || 0) > 0 ? (result.benar || 0) + (result.salah || 0) : 30;
+  const totalQuestionsCount = (result.benar || 0) + (result.salah || 0) > 0 ? (result.benar || 0) + (result.salah || 0) : 15;
   const integrityStatus = result.submissionReason === 'violation_limit'
     ? 'Dihentikan Otomatis (3x Pelanggaran Pindah Tab)'
     : result.violationsCount && result.violationsCount > 0
@@ -243,9 +243,51 @@ export function downloadStudentResultPDF(result: ExamResult): void {
 }
 
 /**
+ * Helper memuat gambar soal menjadi Data URL untuk disisipkan ke PDF
+ */
+async function loadImageForPDF(
+  url: string
+): Promise<{ dataUrl: string; width: number; height: number } | null> {
+  return new Promise((resolve) => {
+    try {
+      const img = new Image();
+      if (!url.startsWith('data:') && !url.startsWith('/')) {
+        img.crossOrigin = 'anonymous';
+      }
+      img.onload = () => {
+        try {
+          const canvas = document.createElement('canvas');
+          canvas.width = img.naturalWidth || img.width;
+          canvas.height = img.naturalHeight || img.height;
+          const ctx = canvas.getContext('2d');
+          if (!ctx) {
+            resolve(null);
+            return;
+          }
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          ctx.drawImage(img, 0, 0);
+          resolve({
+            dataUrl: canvas.toDataURL('image/jpeg', 0.88),
+            width: canvas.width,
+            height: canvas.height,
+          });
+        } catch {
+          resolve(null);
+        }
+      };
+      img.onerror = () => resolve(null);
+      img.src = url;
+    } catch {
+      resolve(null);
+    }
+  });
+}
+
+/**
  * 2. Download Naskah Soal Ujian (PDF)
  */
-export function downloadExamQuestionsPDF(questions: Question[]): void {
+export async function downloadExamQuestionsPDF(questions: Question[]): Promise<void> {
   const doc = new jsPDF({
     orientation: 'portrait',
     unit: 'mm',
@@ -321,7 +363,8 @@ export function downloadExamQuestionsPDF(questions: Question[]): void {
   y += 16;
 
   // Iterasi Soal
-  questions.forEach((q, idx) => {
+  for (let idx = 0; idx < questions.length; idx++) {
+    const q = questions[idx];
     checkPageBreak(25);
 
     doc.setFont('helvetica', 'bold');
@@ -335,6 +378,30 @@ export function downloadExamQuestionsPDF(questions: Question[]): void {
     doc.text(`Soal No. ${idx + 1} [${typeLabel}]`, 15, y);
     doc.setTextColor(0, 0, 0);
     y += 5;
+
+    // Gambar Soal (Jika Ada)
+    if (q.imageUrl) {
+      const loaded = await loadImageForPDF(q.imageUrl);
+      if (loaded && loaded.width > 0 && loaded.height > 0) {
+        const maxImgWidth = 75;
+        const maxImgHeight = 42;
+        const ratio = Math.min(maxImgWidth / loaded.width, maxImgHeight / loaded.height);
+        const drawW = loaded.width * ratio;
+        const drawH = loaded.height * ratio;
+        checkPageBreak(drawH + 12);
+        doc.addImage(loaded.dataUrl, 'JPEG', 18, y, drawW, drawH);
+        y += drawH + 2;
+        if (q.imageCaption) {
+          doc.setFont('helvetica', 'italic');
+          doc.setFontSize(7.5);
+          doc.setTextColor(90, 90, 90);
+          doc.text(q.imageCaption, 18, y + 2);
+          doc.setTextColor(0, 0, 0);
+          y += 5;
+        }
+        doc.setFontSize(9.5);
+      }
+    }
 
     // Teks Soal
     doc.setFont('helvetica', 'normal');
@@ -367,7 +434,7 @@ export function downloadExamQuestionsPDF(questions: Question[]): void {
       });
       y += 3;
     }
-  });
+  }
 
   doc.save(`Naskah_Soal_Matematika_Kelas_VI_${CONFIG.SEKOLAH.replace(/[^a-zA-Z0-9]/g, '_')}.pdf`);
 }
@@ -769,8 +836,14 @@ export function downloadKisiKisiPDF(questions: Question[]): void {
   doc.setFontSize(7.5);
   doc.setTextColor(51, 65, 85);
 
+  const bentukParts = [
+    pgCount > 0 ? `Pilihan Ganda (PG)=${pgCount}` : '',
+    pgkCount > 0 ? `PG Kompleks (PGK)=${pgkCount}` : '',
+    catCount > 0 ? `Benar/Salah (PGK Kategori)=${catCount}` : '',
+  ].filter(Boolean);
+
   const summaryText =
-    `Total: ${stats.total} Butir Soal  |  Level Kognitif: L1 (Pemahaman)=${l1Count}, L2 (Aplikasi)=${l2Count}, L3 (Penalaran HOTS)=${l3Count}  |  Bentuk Soal: Pilihan Ganda (PG)=${pgCount}, PG Kompleks (PGK)=${pgkCount}, Benar/Salah (PGK Kategori)=${catCount}`;
+    `Total: ${stats.total} Butir Soal  |  Level Kognitif: L1 (Pemahaman)=${l1Count}, L2 (Aplikasi)=${l2Count}, L3 (Penalaran HOTS)=${l3Count}  |  Bentuk Soal: ${bentukParts.join(', ')}`;
   doc.text(summaryText, pageWidth / 2, y + 6.2, { align: 'center' });
 
   y += 13;

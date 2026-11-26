@@ -261,7 +261,22 @@ export const Stage3Result: React.FC<Stage3ResultProps> = ({
                       Kunci: {Array.isArray(q.correctAnswer) ? q.correctAnswer.join(', ') : q.correctAnswer || 'Sesuai Kategori'}
                     </span>
                   </div>
-                  <p className="text-slate-800">{q.text}</p>
+                  {q.imageUrl && (
+                    <figure className="rounded-xl border border-slate-200 bg-white p-2.5 text-center">
+                      <img
+                        src={q.imageUrl}
+                        alt={q.imageCaption || `Ilustrasi Soal #${idx + 1}`}
+                        referrerPolicy="no-referrer"
+                        className="max-h-44 w-auto mx-auto rounded-lg object-contain"
+                      />
+                      {q.imageCaption && (
+                        <figcaption className="mt-1.5 text-[11px] text-slate-500">
+                          {q.imageCaption}
+                        </figcaption>
+                      )}
+                    </figure>
+                  )}
+                  <p className="text-slate-800 whitespace-pre-line">{q.text}</p>
                   <div className="p-2.5 rounded bg-blue-50/70 border border-blue-100 text-slate-700">
                     <span className="font-bold text-blue-900 block mb-0.5">Pembahasan:</span>
                     <p className="whitespace-pre-line">{q.explanation}</p>

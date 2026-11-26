@@ -258,24 +258,29 @@ export const MatriksKisiKisiTab: React.FC<MatriksKisiKisiTabProps> = ({ question
               </span>
             </div>
             <div className="space-y-2.5">
-              {stats.typeDistribution.map((t) => (
-                <div key={t.type} className="text-xs">
-                  <div className="flex justify-between items-center mb-1">
-                    <span className="font-bold text-slate-800">{t.label}</span>
-                    <span className="font-extrabold text-slate-900">{t.count} butir</span>
+              {stats.typeDistribution
+                .filter((t) => t.count > 0)
+                .map((t) => (
+                  <div key={t.type} className="text-xs">
+                    <div className="flex justify-between items-center mb-1">
+                      <span className="font-bold text-slate-800">{t.label}</span>
+                      <span className="font-extrabold text-slate-900">{t.count} butir</span>
+                    </div>
+                    <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                      <div
+                        className="h-full bg-amber-500 rounded-full transition-all duration-500"
+                        style={{ width: `${t.percentage}%` }}
+                      />
+                    </div>
                   </div>
-                  <div className="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                    <div
-                      className="h-full bg-amber-500 rounded-full transition-all duration-500"
-                      style={{ width: `${t.percentage}%` }}
-                    />
-                  </div>
-                </div>
-              ))}
+                ))}
             </div>
           </div>
           <span className="text-[11px] text-slate-400 mt-3 pt-2 border-t border-slate-100 block">
-            18 PG Tunggal • 3 PGK • 9 PGK Kategori (B/S)
+            {stats.typeDistribution
+              .filter((t) => t.count > 0)
+              .map((t) => `${t.count} ${t.type === 'pg' ? 'PG Tunggal' : t.type === 'pgk' ? 'PGK' : 'PGK Kategori (B/S)'}`)
+              .join(' • ')}
           </span>
         </div>
       </div>
